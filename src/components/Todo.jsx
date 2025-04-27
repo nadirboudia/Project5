@@ -9,7 +9,11 @@ import CreateSharpIcon from '@mui/icons-material/CreateSharp';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 
 
-export default function Todo( {title , details}) {
+export default function Todo({todo , handlechange}) {
+ function HandlecheckClick(){
+ handlechange(todo.id);
+  
+ }
   return (
     <>
       <Card className='Todocard' sx={{ minWidth: 275, background: "#283593", color: "white", marginTop: 5 }}>
@@ -19,11 +23,11 @@ export default function Todo( {title , details}) {
             <Grid item xs={8}>
               <Box sx={{  p: 1 }}>
                 <Typography variant="h5" sx={{ textAlign: 'right', fontFamily:'All' }}>
-                {title}
+                {todo.title}
 
                   </Typography>
                 <Typography variant="h6" sx={{ textAlign: 'right' , fontFamily:"sans-serif" }}>
-                  {details}
+                  {todo.details}
                 </Typography>
               </Box>
             </Grid>
@@ -41,12 +45,16 @@ export default function Todo( {title , details}) {
                   borderRadius: 1
                 }}
               >
+                
                 <IconButton
                 className='iconButton'
+                onClick={()=>{
+                  HandlecheckClick()
+                }}
                   aria-label="CheckSharpIcon"
                   sx={{
-                    color: '#8bc34a',
-                    background: 'white',
+                    color: todo.isCompleted ? "#8bc34a" : "white"  ,
+                    background: todo.isCompleted ? 'white' : "#8bc34a",
                     border: 'solid #8bc34a 3px'
                   }}
                 >

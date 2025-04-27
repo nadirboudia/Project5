@@ -13,6 +13,7 @@ import Todo from './Todo';
 import TextField from '@mui/material/TextField';
 import { v4 as idd } from 'uuid';
 import { useState } from 'react';
+
 const initialTodos =[
   {
     id: idd(),
@@ -36,6 +37,18 @@ export default function Todolist() {
   const[todos , setTodos]=useState(initialTodos);
   const[newtitle , setNewtitle]=useState("");
 
+  function Handlecheck(todoid){
+  const NewTodo = todos.map((t)=>{
+    if(t.id === todoid)
+    {
+      t.isCompleted= !t.isCompleted;
+    }
+    return t ; 
+  })
+  setTodos(NewTodo)
+  
+  }
+
   function HandleClick() {
     const newTodo = {
       id: idd(),
@@ -48,7 +61,7 @@ export default function Todolist() {
     setNewtitle('')    
   }
   const todo = todos.map((t)=>{
-    return <Todo title={t.title} details={t.details} key={t.id} />
+    return <Todo todo={t} key={t.id}  handlechange={Handlecheck}/>
   })
   return (
     <Container maxWidth="md">
