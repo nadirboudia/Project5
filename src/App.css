@@ -1,0 +1,22 @@
+.iconButton{
+    transition: all 0.2s !important;
+}
+.iconButton:hover {
+    background-color: #c5c5c5 !important ; 
+    box-shadow: 0px 7px 7px rgba(0,0, 0, 0.4);
+}
+.Todocard:hover{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    transition: all 0.2s !important;
+    box-shadow: 0px 7px 7px rgba(0,0, 0, 0.4);
+}
+@font-face {
+    font-family: All;
+    src: url(../public/fonts/Alexandria-Black.ttf);
+}
+@font-face {
+    font-family: A;
+    src: url(../public/fonts/Alexandria-SemiBold.ttf);
+    
+}
