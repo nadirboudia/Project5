@@ -12,42 +12,18 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import Todo from './Todo';
 import TextField from '@mui/material/TextField';
 import { v4 as idd } from 'uuid';
-import { useState } from 'react';
 
-const initialTodos =[
-  {
-    id: idd(),
-    title:'Boudia Nadir',
-    details:' lonely but talented  ',
-    isCompleted:'false',
-  },
-  
-  {
-    id: idd(),
-    title:' Boumediene Mounira ',
-    details:'! she lost everyhthing but she have me  ',
-    isCompleted:'false',
-  },
-  
- 
-]
+import { useState , useContext } from 'react';
+import { TodosContext } from '../context/TodosContext';
+
+
 
 
 export default function Todolist() {
-  const[todos , setTodos]=useState(initialTodos);
+  const {todos , setTodos}= useContext(TodosContext)
   const[newtitle , setNewtitle]=useState("");
 
-  function Handlecheck(todoid){
-  const NewTodo = todos.map((t)=>{
-    if(t.id === todoid)
-    {
-      t.isCompleted= !t.isCompleted;
-    }
-    return t ; 
-  })
-  setTodos(NewTodo)
   
-  }
 
   function HandleClick() {
     const newTodo = {
@@ -61,7 +37,7 @@ export default function Todolist() {
     setNewtitle('')    
   }
   const todo = todos.map((t)=>{
-    return <Todo todo={t} key={t.id}  handlechange={Handlecheck}/>
+    return <Todo todo={t} key={t.id}  />
   })
   return (
     <Container maxWidth="md">

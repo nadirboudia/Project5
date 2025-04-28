@@ -7,11 +7,21 @@ import IconButton from '@mui/material/IconButton';
 import CheckSharpIcon from '@mui/icons-material/CheckSharp';
 import CreateSharpIcon from '@mui/icons-material/CreateSharp';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
+import { TodosContext } from '../context/TodosContext';
+import { useContext } from 'react';
 
 
-export default function Todo({todo , handlechange}) {
+export default function Todo({todo}) {
+ const {todos, setTodos} = useContext(TodosContext) 
  function HandlecheckClick(){
- handlechange(todo.id);
+ const NewTodo = todos.map((t)=>{
+     if(t.id === todo.id)
+     {
+       t.isCompleted= !t.isCompleted;
+     }
+     return t ; 
+   })
+   setTodos(NewTodo)
   
  }
   return (
